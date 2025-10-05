@@ -1,12 +1,11 @@
 import { cn } from "@/lib/utils";
 
 interface CalendarProps {
-  mode?: string;
   selected?: Date;
   className?: string;
 }
 
-export default function Calendar({ mode, selected, className }: CalendarProps) {
+export default function Calendar({ selected, className }: CalendarProps) {
   return (
     <div
       className={cn(

@@ -3,16 +3,7 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  Code,
-  Smartphone,
-  ShoppingCart,
-  Palette,
-  Zap,
-  Globe,
-  BarChart3,
-  ArrowUpRight,
-} from "lucide-react";
+import { Code, Zap, Globe, BarChart3, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/registry/magicui/marquee";
 import AnimatedListDemo from "@/components/registry/example/animated-list-demo";
@@ -211,7 +202,7 @@ export default function FeaturesSection() {
           </a>
 
           <p className='text-white/50 text-sm mt-4'>
-            Join 500+ businesses we've helped grow
+            Join 500+ businesses we&apos;ve helped grow
           </p>
         </div>
       </div>

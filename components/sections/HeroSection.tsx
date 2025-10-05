@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -190,9 +191,11 @@ const HeroSection = () => {
               WebkitMask:
                 "linear-gradient(0deg, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 92%, rgba(0, 0, 0, 0) 98%)",
             }}>
-            <img
+            <Image
               src='/images/hero-bg.png'
               alt='Hero Background'
+              width={800}
+              height={600}
               className='w-full h-auto object-contain'
               style={{
                 transform: "translateY(0)", // Ensure vertical centering
@@ -349,9 +352,11 @@ const HeroSection = () => {
                     marginLeft: i > 0 ? "-8px" : "0",
                     zIndex: 10 - i,
                   }}>
-                  <img
+                  <Image
                     src={avatarUrl}
                     alt={`User ${i + 1}`}
+                    width={40}
+                    height={40}
                     className='w-full h-full object-cover'
                   />
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 // Icons removed - using background graphics instead
 
 interface ServiceCardProps {
@@ -16,7 +17,6 @@ function ServiceCard({
   index,
   title,
   description,
-  className,
   span,
   image,
 }: ServiceCardProps) {
@@ -35,9 +35,11 @@ function ServiceCard({
       {/* Background graphic */}
       {image && (
         <div className='absolute bottom-0 left-0 flex items-end justify-end w-full'>
-          <img
+          <Image
             src={image}
             alt=''
+            width={400}
+            height={300}
             className={
               index === 1
                 ? "w-5/6 mx-auto -mb-20"

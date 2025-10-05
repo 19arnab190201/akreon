@@ -1,20 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+// Menu and X icons removed as they're not used
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  // isScrolled state removed as it's not used
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Scroll effect removed as isScrolled is not used
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -57,7 +50,7 @@ const Navigation = () => {
           {/* Enhanced Desktop Navigation */}
           <div className='hidden lg:block'>
             <div className='ml-8 flex items-baseline space-x-0.5'>
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -115,7 +108,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className='lg:hidden animate-in slide-in-from-top-4 duration-300'>
             <div className='px-4 pt-4 pb-6 space-y-2 bg-black/50 backdrop-blur-xl rounded-2xl mt-4 border border-white/10 shadow-2xl'>
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
