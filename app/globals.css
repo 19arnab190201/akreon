@@ -1,26 +1,308 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Design System Colors */
+  --primary-gradient-start: #c95c26;
+  --primary-gradient-mid: #553628;
+  --primary-gradient-end: #171717;
+  --accent-orange: #ff7a2b;
+  --accent-muted: #bc7e50;
+  --accent-light: #ffb07a;
+  --dark-bg: #171717;
+  --near-black: #1e1a18;
+  --white: #ffffff;
+  --muted-white: rgba(255, 255, 255, 0.78);
+  --muted-light: rgba(255, 255, 255, 0.48);
+
+  /* Typography */
+  --font-inter: var(--font-inter);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Custom Color Palette */
+  --color-primary-start: var(--primary-gradient-start);
+  --color-primary-mid: var(--primary-gradient-mid);
+  --color-primary-end: var(--primary-gradient-end);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-light: var(--accent-light);
+  --color-dark-bg: var(--dark-bg);
+  --color-near-black: var(--near-black);
+  --color-white: var(--white);
+  --color-muted-white: var(--muted-white);
+  --color-muted-light: var(--muted-light);
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #171717;
+  color: var(--white);
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Utility Classes */
+.page-hero {
+  background: linear-gradient(
+    150deg,
+    var(--primary-gradient-start) 5%,
+    var(--primary-gradient-mid) 45%,
+    var(--primary-gradient-end) 100%
+  );
+}
+
+.site-bg {
+  background: var(--dark-bg);
+}
+
+.dots-pattern {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent-orange) 0%,
+    var(--accent-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-effect {
+  box-shadow: 0 10px 50px rgba(201, 92, 38, 0.16);
+}
+
+.card-hover {
+  transition: all 220ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+/* Smooth Animations */
+.smooth-transition {
+  transition: all 220ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(255, 165, 85, 0.18);
+  outline-offset: 3px;
+}
+
+/* Enhanced Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 122, 43, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 122, 43, 0.6);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient Text Enhancement */
+.gradient-text-enhanced {
+  background: linear-gradient(45deg, #ff7a2b, #ffb07a, #ff7a2b, #c95c26);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Noise Grain Animation */
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+
+/* Fast overlay animations */
+@keyframes fast-sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fast-sweep-vertical {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-fast-sweep {
+  animation: fast-sweep 3s linear infinite;
+}
+
+.animate-fast-sweep-vertical {
+  animation: fast-sweep-vertical 4s linear infinite;
+}
+
+/* Marquee animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
 }

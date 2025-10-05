@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Akreon - Digital Agency Landing Page
+
+A modern, animated landing page for Akreon, a digital agency specializing in app development, web development, UI/UX design, and Shopify solutions.
+
+## Features
+
+- **Modern Design**: Dark theme with orange gradient accents following the design specifications
+- **Smooth Animations**: GSAP-powered scroll animations and interactions
+- **Responsive Design**: Fully responsive across desktop, tablet, and mobile devices
+- **Performance Optimized**: Built with Next.js 15 and optimized for speed
+- **Accessibility**: WCAG compliant with proper focus management and screen reader support
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS v4
+- **Animations**: GSAP with ScrollTrigger
+- **Icons**: Lucide React
+- **Typography**: Inter font
+- **Language**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                    # Next.js app directory
+│   ├── globals.css        # Global styles and design system
+│   ├── layout.tsx         # Root layout with providers
+│   └── page.tsx           # Main page component
+├── components/            # React components
+│   ├── providers/         # Context providers (GSAP)
+│   ├── sections/          # Page sections
+│   │   ├── Navigation.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── FeaturesSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── CTASection.tsx
+│   │   └── Footer.tsx
+│   └── ui/               # Reusable UI components
+│       └── Button.tsx
+└── lib/                  # Utility functions
+    └── utils.ts          # Helper functions and responsive utilities
+```
 
-## Learn More
+## Design System
 
-To learn more about Next.js, take a look at the following resources:
+The project follows a comprehensive design system based on the provided specifications:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Colors**: Dark theme with orange gradient accents (#FF7A2B, #C95C26, #553628)
+- **Typography**: Inter font family with responsive sizing
+- **Spacing**: Consistent spacing scale using Tailwind utilities
+- **Animations**: Smooth transitions with GSAP for premium feel
+- **Components**: Reusable components following design patterns
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+### Colors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Colors are defined in both `globals.css` (CSS variables) and `tailwind.config.js` (Tailwind classes).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Animations
+
+GSAP animations are configured in each component with ScrollTrigger for scroll-based effects.
+
+### Responsive Design
+
+Uses the `normalize()` utility function for responsive sizing across all components.
+
+## Deployment
+
+The project is ready for deployment on Vercel:
+
+```bash
+npm run build
+npm start
+```
+
+Or deploy directly to Vercel:
+
+```bash
+vercel
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+This project is proprietary and confidential.
