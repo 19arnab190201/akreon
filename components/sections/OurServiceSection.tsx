@@ -1,57 +1,62 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  TrendingUp,
-  BarChart3,
-  Target,
-  Zap,
-  Shield,
-  Brain,
-  PieChart,
-  DollarSign,
-} from "lucide-react";
+// Icons removed - using background graphics instead
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
   className?: string;
   span?: string;
+  image?: string;
+  index: number;
 }
 
 function ServiceCard({
+  index,
   title,
   description,
-  icon: Icon,
   className,
   span,
+  image,
 }: ServiceCardProps) {
   return (
     <div
       className={cn(
         "group relative overflow-hidden rounded-2xl p-6 transition-all duration-500",
-        "bg-gradient-to-br from-white/5 to-black/40 border border-white/10",
-        "hover:border-accent-orange/30 hover:-translate-y-2",
+        "bg-[#1C1C1C] border border-white/10",
+        "border-accent-orange/20",
         "transform-gpu backdrop-blur-sm",
         span
       )}>
       {/* Background glow effect */}
-      <div className='absolute inset-0 bg-gradient-to-br from-accent-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl' />
+      <div className='absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl' />
+
+      {/* Background graphic */}
+      {image && (
+        <div className='absolute bottom-0 left-0 flex items-end justify-end w-full'>
+          <img
+            src={image}
+            alt=''
+            className={
+              index === 1
+                ? "w-5/6 mx-auto -mb-20"
+                : index === 3
+                ? "w-[60%] mx-auto mb-5"
+                : "w-full"
+            }
+          />
+        </div>
+      )}
 
       {/* Content */}
-      <div className='relative z-10 flex flex-col h-full'>
-        {/* Icon */}
-        <div className='mb-4'>
-          <Icon className='h-8 w-8 text-accent-orange group-hover:text-accent-light transition-colors duration-300' />
-        </div>
-
+      <div className='relative z-10 flex flex-col h-full justify-start'>
         {/* Text Content */}
         <div className='flex-1'>
-          <h3 className='text-lg font-bold text-white mb-2 group-hover:text-accent-light transition-colors duration-300'>
+          <h3 className='text-[20px] leading-[24px] font-medium text-white mb-3 group-hover:text-white transition-colors duration-300'>
             {title}
           </h3>
-          <p className='text-white/70 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300'>
+          <p className='text-[16px] leading-[21px] font-normal text-white group-hover:text-white transition-colors duration-300'>
             {description}
           </p>
         </div>
@@ -61,48 +66,14 @@ function ServiceCard({
 }
 
 export default function OurServiceSection() {
-  const services = [
-    {
-      title: "Precision-Driven Portfolio Growth",
-      description:
-        "Every move guided by data and insights for smarter portfolio growth.",
-      icon: TrendingUp,
-      span: "col-span-2 row-span-3",
-    },
-    {
-      title: "Diversified Assets",
-      description: "Tailor your portfolio to achieve optimal performance.",
-      icon: BarChart3,
-      span: "col-span-1 row-span-2",
-    },
-    {
-      title: "Your Portfolio, Optimized in Real-Time",
-      description:
-        "Adjusted instantly with market changes to enhance investment efficiency.",
-      icon: Target,
-      span: "col-span-2 row-span-2",
-    },
-    {
-      title: "Maximize Returns, Minimize Effort",
-      description:
-        "A fully automated investment system that saves you time and worry.",
-      icon: Zap,
-      span: "col-span-1 row-span-3",
-    },
-  ];
-
   return (
     <section className='py-20 px-4 site-bg'>
-      <div className='max-w-7xl mx-auto'>
+      <div className='max-w-6xl mx-auto'>
         {/* Section Header */}
         <div className='text-center mb-16'>
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-            Our <span className='gradient-text'>Services</span>
+          <h2 className='text-[42px] leading-[46px] font-semibold text-white mb-6'>
+            Intelligent Development Solutions
           </h2>
-          <p className='text-xl text-white/70 max-w-3xl mx-auto leading-relaxed'>
-            Discover the comprehensive suite of investment services designed to
-            maximize your portfolio potential
-          </p>
         </div>
 
         {/* Bento Grid */}
@@ -111,17 +82,43 @@ export default function OurServiceSection() {
           style={{
             gridTemplateColumns: "repeat(3, 1fr)",
             gridTemplateRows: "repeat(5, 1fr)",
-            height: "600px",
+            height: "680px",
           }}>
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              span={service.span}
-            />
-          ))}
+          {/* Card 1 - Scalable Web Growth */}
+          <ServiceCard
+            index={0}
+            title='Scalable Web Growth'
+            description='Websites built for performance and seamless business growth.'
+            span='col-span-2 row-span-3'
+            image='/images/fe1.svg'
+          />
+
+          {/* Card 2 - Cross-Platform Ecosystem */}
+          <ServiceCard
+            index={1}
+            title='Cross-Platform Ecosystem'
+            description='Seamlessly connect your web, mobile, and e-commerce experiences into a unified ecosystem that drives engagement across every device.'
+            span='col-span-1 row-span-3'
+            image='https://framerusercontent.com/images/u66ASMNVAMgceid2DlnzZuqYrO0.png?scale-down-to=1024'
+          />
+
+          {/* Card 3 - Accelerate Development, Maximize Impact */}
+          <ServiceCard
+            index={2}
+            title='Accelerate Development, Maximize Impact'
+            description='From prototypes to production — we deliver blazing-fast, custom-built solutions that bring your ideas to life without compromise.'
+            span='col-span-2 row-span-2'
+            image='/assets/lightning-card.png'
+          />
+
+          {/* Card 4 - Real-Time Optimization & Support */}
+          <ServiceCard
+            index={3}
+            title='Real-Time Optimization & Support'
+            description='Continuous performance tracking and updates keep your digital products future-ready, secure, and perfectly tuned for user experience.'
+            span='col-span-1 row-span-2'
+            image='https://framerusercontent.com/images/xcfDk8vbAh4pS19CCv1T1skqA7o.png?scale-down-to=1024'
+          />
         </div>
       </div>
     </section>
