@@ -95,18 +95,6 @@ const HeroSection = () => {
           },
           "-=0.2"
         );
-
-      // Parallax effect for hero background
-      gsap.to(heroRef.current, {
-        yPercent: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -116,10 +104,10 @@ const HeroSection = () => {
     <section
       id='home'
       ref={heroRef}
-      className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+      className='relative flex items-center justify-center overflow-hidden'
+      style={{ minHeight: "calc(100vh - 3.5rem)" }}>
       {/* Fade out gradient at bottom for smooth transition */}
-      <div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#171717] to-transparent z-20 pointer-events-none' />
-      {/* Dot matrix effect for whole page */}
+      {/* <div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#171717] to-transparent z-20 pointer-events-none' /> */}
       <div
         className='absolute inset-0'
         style={{

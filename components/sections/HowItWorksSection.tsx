@@ -65,9 +65,20 @@ function ServiceCard({
   );
 }
 
-export default function OurServiceSection() {
+export default function HowItWorksSection() {
   return (
-    <section className='py-20 px-4 site-bg'>
+    <section className='py-20 px-4 relative'>
+      <div
+        className='absolute inset-0'
+        style={{
+          zIndex: -1,
+          backgroundImage:
+            "url(https://framerusercontent.com/images/cMSxpaeXFJBvmYAzlldwCL2f25E.png)",
+          backgroundRepeat: "repeat",
+          backgroundPosition: "left top",
+          backgroundSize: "65px auto",
+        }}
+      />
       <div className='max-w-6xl mx-auto'>
         {/* Section Header */}
         <div className='text-center mb-16'>
